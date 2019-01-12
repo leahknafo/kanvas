@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+<meta name="NetsparkQuiltingResult" total-length="5132" removed="0" rules-found="w3057,w3106,w1395,w1400,w1401,w2310,w1450,w2675,w3369,w3370,w2232,w4862,w6682" />
+</head>
+
+<body>
+    <div class='container'>
+        <form name="square">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>rid A</label>
+                        <input type="number" class="form-control" name="riba" value="">
+                    </div>
+                    <div class="form-group">
+                        <label>rid B</label>
+                        <input class="form-control" name="ribb" value="">
+                    </div>
+                    <div class="form-group">
+                        <label>x</label>
+                        <input class="form-control" name="myX" value=''>
+                    </div>
+                    <div class="form-group">
+                        <label>y</label>
+                        <input class="form-control" name="myY" value=''>
+                    </div>
+                    <div class="form-group">
+                        <label>square area:</label>
+                        <input class="form-control" name="area" value="">
+                    </div>
+                    <button type="submit" class="btn btn-default" name="draw">draw</button>
+                </div>
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <h4>drawing on a canvas!</h4>
+                    <div class='canv'>
+                        <canvas id='c' width='360' height="360"></canvas>
+                    </div>
+                    <button name="clear" type="button" class="btn btn-default btn-block">clear</button>
+                </div>
+            </div>
+        </form>
+        <script>
+            var valid = 360;
+            var x;
+            var y;
+            var firstRid;
+            var secondRid;
+            var ourX;
+            var ourY;
+
+            function calc() {
+                firstRid = Number(document.forms.square.riba.value);
+                secondRid = Number(document.forms.square.ribb.value);
+                ourX = Number(document.forms.square.myX.value);
+                ourY = Number(document.forms.square.myY.value);
+                if (firstRid > 0 && secondRid > 0 && ourX > 0 && ourY > 0 && firstRid + ourX <= valid && secondRid + ourY <= valid) {
+                    var sum = firstRid * secondRid;
+                    document.forms.square.area.value = sum;
+                }
+                else {
+                    alert("The value you entered is not valid");
+                }
+            };
+            function drawOnKanvas() {
+                var canvas = document.getElementById('c');
+                var context = canvas.getContext('2d');
+                context.beginPath();
+                context.rect(ourX, ourY, firstRid, secondRid);
+                context.stroke();
+            }
+            document.forms.square.clear.addEventListener('click', function (e) {
+                e.preventDefault();
+                var canvas = document.getElementById('c');
+                var context = canvas.getContext("2d");
+                context.clearRect(0, 0, canvas.width, canvas.height);
+            });
+            document.forms.square.draw.addEventListener('click', function (e) {
+                e.preventDefault();
+                calc();
+                if (firstRid > 0 && secondRid > 0 && ourX > 0 && ourY > 0 && firstRid + ourX <= valid && secondRid + ourY <= valid) {
+                    drawOnKanvas();
+                }
+            });
+            document.getElementById('c').addEventListener('click', function (e) {
+                e.preventDefault();
+                var canvas = document.getElementById('c');
+                var rect = canvas.getBoundingClientRect();
+                x = event.clientX - rect.left;
+                y = event.clientY - rect.top;
+                document.forms.square.myX.value = x;
+                document.forms.square.myY.value = y;
+            });
+
+//Remove this function from the comment to fill the canvas in squares by settingTimeOut until it is blacked out.Remove the function to the comment again to continue the current performance of the code.
+
+        //     setTimeout(squares,100);
+        // function squares() {
+        //        var canvas = document.getElementById('c');
+        //         var context = canvas.getContext('2d')
+        //         context.beginPath();
+        //         context.rect(0, 0, Math.random()*canvas.height, Math.random()*canvas.width);
+        //         context.stroke();
+        //         setTimeout(squares,100);
+        // } 
+
+        </script>
+        <style>
+            .canv {
+                height: 360;
+                width: 360;
+                border: 1px solid black;
+            }
+        </style>
+        
+</body>
+
+</html>
