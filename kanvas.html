@@ -60,11 +60,11 @@
 
 //This function accepts the data of the ribs and position, and calculates the area.
             function calc() {
-                firstRid = Number(document.forms.square.riba.value);
-                secondRid = Number(document.forms.square.ribb.value);
+                firstRib = Number(document.forms.square.riba.value);
+                secondRib = Number(document.forms.square.ribb.value);
                 ourX = Number(document.forms.square.myX.value);
                 ourY = Number(document.forms.square.myY.value);
-                if (firstRid > 0 && secondRid > 0 && ourX > 0 && ourY > 0 && firstRid + ourX <= valid && secondRid + ourY <= valid) {
+                if (firstRib > 0 && secondRib > 0 && ourX > 0 && ourY > 0 && firstRib + ourX <= valid && secondRib + ourY <= valid) {
                     var sum = firstRib * secondRib;
                     document.forms.square.area.value = sum;
                 }
@@ -95,7 +95,7 @@
             document.forms.square.draw.addEventListener('click', function (e) {
                 e.preventDefault();
                 calc();
-                if (firstRid > 0 && secondRid > 0 && ourX > 0 && ourY > 0 && firstRib + ourX <= valid && secondRib + ourY <= valid) {
+                if (firstRib > 0 && secondRib > 0 && ourX > 0 && ourY > 0 && firstRib + ourX <= valid && secondRib + ourY <= valid) {
                     drawOnKanvas();
                 }
             });
