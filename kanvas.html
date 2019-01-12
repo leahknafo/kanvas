@@ -18,11 +18,11 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label>rid A</label>
+                        <label>rib A</label>
                         <input type="number" class="form-control" name="riba" value="">
                     </div>
                     <div class="form-group">
-                        <label>rid B</label>
+                        <label>rib B</label>
                         <input class="form-control" name="ribb" value="">
                     </div>
                     <div class="form-group">
@@ -53,8 +53,8 @@
             var valid = 360;
             var x;
             var y;
-            var firstRid;
-            var secondRid;
+            var firstRib;
+            var secondRib;
             var ourX;
             var ourY;
 
@@ -65,7 +65,7 @@
                 ourX = Number(document.forms.square.myX.value);
                 ourY = Number(document.forms.square.myY.value);
                 if (firstRid > 0 && secondRid > 0 && ourX > 0 && ourY > 0 && firstRid + ourX <= valid && secondRid + ourY <= valid) {
-                    var sum = firstRid * secondRid;
+                    var sum = firstRib * secondRib;
                     document.forms.square.area.value = sum;
                 }
                 else {
@@ -78,7 +78,7 @@
                 var canvas = document.getElementById('c');
                 var context = canvas.getContext('2d');
                 context.beginPath();
-                context.rect(ourX, ourY, firstRid, secondRid);
+                context.rect(ourX, ourY, firstRib, secondRib);
                 context.stroke();
             }
 
@@ -95,7 +95,7 @@
             document.forms.square.draw.addEventListener('click', function (e) {
                 e.preventDefault();
                 calc();
-                if (firstRid > 0 && secondRid > 0 && ourX > 0 && ourY > 0 && firstRid + ourX <= valid && secondRid + ourY <= valid) {
+                if (firstRid > 0 && secondRid > 0 && ourX > 0 && ourY > 0 && firstRib + ourX <= valid && secondRib + ourY <= valid) {
                     drawOnKanvas();
                 }
             });
