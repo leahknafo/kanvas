@@ -58,6 +58,7 @@
             var ourX;
             var ourY;
 
+//This function accepts the data of the ribs and position, and calculates the area.
             function calc() {
                 firstRid = Number(document.forms.square.riba.value);
                 secondRid = Number(document.forms.square.ribb.value);
@@ -72,7 +73,7 @@
                 }
             };
 
-            
+//This function draws on the canvas parallel to calculating the square entered.
             function drawOnKanvas() {
                 var canvas = document.getElementById('c');
                 var context = canvas.getContext('2d');
@@ -81,7 +82,7 @@
                 context.stroke();
             }
 
-
+//By pressing the button, the function will clear the kanvas.
             document.forms.square.clear.addEventListener('click', function (e) {
                 e.preventDefault();
                 var canvas = document.getElementById('c');
@@ -90,6 +91,7 @@
             });
 
 
+//By pressing the button, the calculation function will be activated. And after the validation the function that draws on the canvas will be activated.
             document.forms.square.draw.addEventListener('click', function (e) {
                 e.preventDefault();
                 calc();
@@ -98,7 +100,7 @@
                 }
             });
 
-
+//By clicking on the canvas the value of the point will be saved, When you click the button, the square appears at the saved point.
             document.getElementById('c').addEventListener('click', function (e) {
                 e.preventDefault();
                 var canvas = document.getElementById('c');
